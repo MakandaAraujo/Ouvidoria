@@ -1,0 +1,33 @@
+import java.util.ArrayList;
+
+public class Ouvidoria {
+
+		ArrayList<String>ListaDeReclamacoes = new ArrayList<String>();
+		
+		public String listaDeReclamacao() {
+			String reclamacao = "lista de reclamação";
+			
+			for (int i = 0; i < tamanhoDaLista(); i++) {
+				reclamacao += "\n\n Codigo: " + (i + 1) + "\n Reclamação: " + ListaDeReclamacoes.get(i);
+			}
+			return reclamacao;
+		}
+		public void adicionarReclamacao (String adicionarReclamacao) {
+			ListaDeReclamacoes.add(adicionarReclamacao);
+		}
+		public void removerReclamacao (int  removerReclamacao) {
+			ListaDeReclamacoes.remove(removerReclamacao - 1);
+		}
+		public String pesquisarReclamacao (int pesquisarReclamacao) {
+			return ListaDeReclamacoes.get(pesquisarReclamacao - 1);
+		}
+		public void editarReclamacao (int editarReclamacao, String novaReclamacao) {
+			ListaDeReclamacoes.set(editarReclamacao - 1, novaReclamacao);
+		}
+		public int tamanhoDaLista() {
+			return ListaDeReclamacoes.size();
+		}
+		public void add(ArrayList<String> listaDeReclamacoes2) {
+			// TODO Auto-generated method stub
+		}
+}
