@@ -1,0 +1,97 @@
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
+public class TesteOuvidoria {
+
+	 public static void main(String[] args) {
+		 
+		 new ArrayList<String>();
+		
+		 Ouvidoria listaOuvidoria = new Ouvidoria();
+		 JOptionPane.showMessageDialog(null, "Ouvidoria de reclamações ");
+		 
+		 while (true) {
+			 String opcaoStr = JOptionPane.showInputDialog("Escolha uma opção: \n 1) Adicionar reclamação \n 2) Remover reclamação" +
+			 "\n 3) Alterar reclamação \n 4) Listar reclamações \n 5) Pesquisar reclamação por posição \n 6) Sair ");
+			 
+			 int opcao = Integer.parseInt(opcaoStr);
+			 
+			 if (opcao == 1) {
+				 JOptionPane.showInputDialog("Digite sua reclamação: ");
+				 JOptionPane.showMessageDialog(null, listaOuvidoria);
+				 
+				 if (listaOuvidoria.tamanhoDaLista() > 0) {
+					 listaOuvidoria.add(null, ListaDeReclamacoes);
+					 JOptionPane.showInputDialog(null, "Adicione sua reclamação: ");
+					 JOptionPane.showConfirmDialog(null, "a sua reclamaçao foi adicionada com sucesso!");	 
+				 }
+				 else {
+					JOptionPane.showMessageDialog(null, "não foi possivel adicionar uma reclamação");
+				}
+			 }
+			 else if (opcao == 2) {
+				 if (listaOuvidoria.tamanhoDaLista() == 0) {
+					 JOptionPane.showMessageDialog(null, "Não há reclamações para remover");
+				 }
+				 else {
+					 String removerReclamacaoStr = JOptionPane.showInputDialog("Digite a reclamação que deseja remover \n " + listaOuvidoria);
+					 int removerReclamacao = Integer.parseInt(removerReclamacaoStr);
+				 
+				 if (removerReclamacao < 1 || removerReclamacao > listaOuvidoria.tamanhoDaLista()) {
+					 JOptionPane.showMessageDialog(null, "Numero não existente!");
+					 }
+				 else {
+					 listaOuvidoria.removerReclamacao(removerReclamacao);
+					 JOptionPane.showMessageDialog(null, "A reclamação foi excluida com sucesso! ");
+				 }
+			}
+		 }
+			 else if (opcao == 3) {
+				 if (listaOuvidoria.tamanhoDaLista() == 0) {
+				 JOptionPane.showMessageDialog(null, "A lista de reclamações está vazia!");
+		  }  else {
+			String editarReclamacaoStr = JOptionPane.showInputDialog("Qual reclamação você quer alterar? \n ");
+			int editarRelcamacao = Integer.parseInt(editarReclamacaoStr);
+			
+			if (editarRelcamacao < 1 || editarRelcamacao > listaOuvidoria.tamanhoDaLista()) { 
+				JOptionPane.showMessageDialog(null, "Alteração inválida!");
+			} else {
+				String novaReclamacaoStr = JOptionPane.showInputDialog("Digite a reclamação: ");
+				listaOuvidoria.editarReclamacao(editarRelcamacao, novaReclamacaoStr);
+				JOptionPane.showMessageDialog(null, "Reclamação alterada");
+			}
+		}
+	}
+			 else if (opcao == 4) {
+				 if (listaOuvidoria.tamanhoDaLista() == 0) {
+					 JOptionPane.showMessageDialog(null, "A lista está vazia!");
+		   } else {
+			   JOptionPane.showMessageDialog(null, "Esta é a lista: " + listaOuvidoria);
+		   }
+	     }
+			 else if (opcao == 5) {
+				if (listaOuvidoria.tamanhoDaLista() == 0) {
+						 JOptionPane.showMessageDialog(null, "Lista de reclamações vazia!");
+						 
+			 			 } else {
+			 				 String pesquisaStr = JOptionPane.showInputDialog("Qual reclamação deseja pesquisar? Wn" + listaOuvidoria);
+			 				 int pesquisa = Integer.parseInt(pesquisaStr);
+						 
+			 				 if (pesquisa < 1 || pesquisa > listaOuvidoria.tamanhoDaLista()) {
+			 					 JOptionPane.showMessageDialog(null, "pesquisa inválida!");
+			 		       } else {
+			 		    	   String pesquisaSelecionada = listaOuvidoria.pesquisarReclamacao(pesquisa);
+			 		    	   JOptionPane.showMessageDialog(null, pesquisaSelecionada);
+			 		}
+			    }
+		   }
+			 else if (opcao == 6) {
+					break;
+	  }
+			 else {
+					JOptionPane.showMessageDialog(null, "OPÇÃO INVALIDA!");
+				}
+   }
+  }
+}
